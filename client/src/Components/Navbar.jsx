@@ -26,7 +26,7 @@ function Navbar(props) {
                         </Link>
                     </li>
                     <li class="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                    <Link to="/" class="flex items-center transition-colors hover:text-blue-500">
+                    <Link to="/Login" class="flex items-center transition-colors hover:text-blue-500">
                         LOG IN
                         </Link>
                     </li>
