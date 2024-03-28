@@ -5,7 +5,7 @@ import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 
 
 
-function LogIn(props) {
+function SignUp(props) {
     const [formData, setFormData] = useState({});
     const [error, setError] = useState(null)
     const navigate = useNavigate('');
@@ -75,6 +75,13 @@ function LogIn(props) {
                     id='email'
                     onBlur={hendleChange}
                     />
+                <Label className='mt-5' value='Your username'/>
+                <TextInput
+                    type='text'
+                    placeholder='username'
+                    id='username'
+                    onBlur={hendleChange}
+                    />
                 <Label className='mt-5' value='Your Password'/>
                 <TextInput
                     type='password'
@@ -90,15 +97,15 @@ function LogIn(props) {
                         </>
                       )
                       :
-                        "Log In"
+                        "Sign Up"
                     }
                 </Button>
                 
 
             </form>
-            <p className='text-sm mt-2'>don't have an account?
-            <Link to='/Signup'>
-            <span className='text-cyan-500 font-semibold'>Sign Up</span>
+            <p className='text-sm mt-2'>Allready have an account?
+            <Link to='/register'>
+            <span className='text-cyan-500 font-semibold'>Sign In</span>
             </Link>
             </p>
             {error && (
@@ -114,4 +121,4 @@ function LogIn(props) {
     );
 }
 
-export default LogIn;
+export default SignUp;
