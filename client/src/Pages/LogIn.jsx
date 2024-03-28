@@ -15,7 +15,7 @@ function LogIn(props) {
     
     // hendleChane part----------------------------------------
     const hendleChange =(e) =>{
-        setFormData({...formData, [e.target.id] : e.target.value.trim() })
+        setFormData({...formData, [e.target.id] : e.target.value })
         
     }
 
@@ -31,10 +31,10 @@ function LogIn(props) {
         if(!formData.email || !formData.password || formData.email ==='' || formData.password === ''){
           setError("All field required");
           console.log(error)
-          setLoading(true)
+          setLoading(false)
         }
         try{
-            const res = await fetch(`${apiUrl}/api/signIn`,{
+            const res = await fetch(`http://localhost:3000/api/user/alluser`,{
                 method: "POST",
                 headers: {'Content-Type' : 'application/json'},
                 credentials: 'include',
@@ -45,18 +45,19 @@ function LogIn(props) {
             const data = await res.json();
             if(data.success === "false"){
                 
-                
-                setError(data.maessage);
+                setLoading(false)
+                window.alert(data.maessage);
                 
             }
             if(res.ok){
+                setLoading(false)
                 // dispatch(signInSuccess(data));
                 navigate('/');
             }
         }
         catch(err){
-            
-            setError(err.meassage);
+            setLoading(false)
+            window.alert(err.message);
         }
     }
 
@@ -85,9 +86,8 @@ function LogIn(props) {
                     {
                       loading ? (
                         <>
-                        <Spinner className='text-sm'/> loading.....
+                        <Spinner className='text-sm m-4'/> <span>loading.....</span>
                         </>
-                        
                       )
                       :
                         "Log In"
