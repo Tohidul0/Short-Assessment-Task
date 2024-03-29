@@ -28,36 +28,38 @@ function SignUp(props) {
         setLoading(true)
         console.log(formData)
         console.log('clickeeddd')
-        if(!formData.email || !formData.password || formData.email ==='' || formData.password === ''){
-          setError("All field required");
+        if(!formData.email || !formData.password || !formData.username || formData.username === '' || formData.email ==='' || formData.password === ''){
+          window.alert("All field required");
           console.log(error)
           setLoading(false)
         }
-        try{
-            const res = await fetch(`http://localhost:3000/api/user/alluser`,{
-                method: "POST",
-                headers: {'Content-Type' : 'application/json'},
-                credentials: 'include',
-                body: JSON.stringify(formData)
-                
-            });
-           
-            const data = await res.json();
-            if(data.success === "false"){
-                
-                setLoading(false)
-                window.alert(data.maessage);
-                
+        else{
+            try{
+                const res = await fetch(`http://localhost:3000/api/user/auth/signup`,{
+                    method: "POST",
+                    headers: {'Content-Type' : 'application/json'},
+                    credentials: 'include',
+                    body: JSON.stringify(formData)
+                    
+                });
+               
+                const data = await res.json();
+                if(data.success === "false"){
+                    
+                    setLoading(false)
+                    window.alert(data.maessage);
+                    
+                }
+                if(res.ok){
+                    setLoading(false)
+                    // dispatch(signInSuccess(data));
+                    navigate('/login');
+                }
             }
-            if(res.ok){
+            catch(err){
                 setLoading(false)
-                // dispatch(signInSuccess(data));
-                navigate('/');
+                window.alert(err.message);
             }
-        }
-        catch(err){
-            setLoading(false)
-            window.alert(err.message);
         }
     }
 

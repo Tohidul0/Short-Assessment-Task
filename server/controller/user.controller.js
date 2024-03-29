@@ -3,6 +3,32 @@ import  bcryptjs from 'bcryptjs';
 import { error } from "console";
 import jwt from "jsonwebtoken";
 
+export const signUp = async (req, res, next) => {
+   const {username, email, password  } = req.body;
+   console.log(username, email ) ;
+
+   if(!username || !email || !password || username.trim() === '' || email.trim() === '' || password == ''){
+      return res.status(400).json({ error: 'All fields are required' });
+   }
+    //    hashing passworad with bycriptjs----------------------------
+   const hashpasswoard =bcryptjs.hashSync(password,10);
+   const newUser = new User(
+    {
+      userName : username,
+      email,
+      password : hashpasswoard
+    }
+   );
+   
+   try{
+    await newUser.save();
+    res.json('SignUp successful') 
+   }
+   catch(err){
+      return error(err);
+   }
+   
+};
 
 
 export const signIn = async (req, res ) => {
