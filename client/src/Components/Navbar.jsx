@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/Auth';
 
 function Navbar(props) {
+    const {user} = useAuth();
+    const [username, setUsername] = useState('');
+    
+    useEffect(() => {
+        // Log user data for debugging
+       console.log(user);
+      }, [user]);
     return (
         <div>
     
@@ -25,11 +33,19 @@ function Navbar(props) {
                     missions
                         </Link>
                     </li>
-                    <li class="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                    {user ? (
+                        <li class="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                    <button class="flex items-center transition-colors hover:text-blue-500">
+                        Log Out
+                    </button>
+                    </li>
+                    ) : (
+                        <li class="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
                     <Link to="/Login" class="flex items-center transition-colors hover:text-blue-500">
                         LOG IN
                         </Link>
                     </li>
+                    )}
                     
                 </ul>
             </div>
