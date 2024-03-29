@@ -106,7 +106,7 @@ function SignUp(props) {
 
             </form>
             <p className='text-sm mt-2'>Allready have an account?
-            <Link to='/register'>
+            <Link to='/login'>
             <span className='text-cyan-500 font-semibold'>Sign In</span>
             </Link>
             </p>

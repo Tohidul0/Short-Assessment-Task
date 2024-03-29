@@ -55,12 +55,12 @@ function LogIn(props) {
                 setLoading(false)
                 console.log(data);
                 login(data);
-                navigate('/');
+                navigate('/home');
             }
         }
         catch(err){
             setLoading(false)
-            window.alert(err.message);
+            window.alert(err);
         }
     }
 
