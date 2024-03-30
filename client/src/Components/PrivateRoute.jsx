@@ -8,4 +8,3 @@ function PrivateRoute(props) {
 }
 
 export default PrivateRoute;
-//render

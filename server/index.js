@@ -2,6 +2,7 @@ import express from  "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.route.js"
+import missionRouter from "./routes/mission.route.js"
 import cors from 'cors'
 import cookieParser from 'cookie-parser'; 
 
@@ -36,4 +37,16 @@ app.listen(3000 , () =>{
 
 
 app.use('/api/user/auth' ,userRouter);
+app.use('/api/mission', missionRouter);
+
+
+app.use((err, req, res, next) => {
+    const statusCode  = req.statusCode || 500;
+    const maessage = err.message || 'internal server error';
+    res.status(statusCode).json({
+       success : 'false',
+       statusCode,
+       maessage
+    })
+   })
 

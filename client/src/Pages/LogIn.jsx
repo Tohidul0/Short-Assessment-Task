@@ -85,7 +85,7 @@ function LogIn(props) {
                     id='password'
                     onBlur={hendleChange}
                     />
-                <Button type="submit" className='mt-5 mb-5 w-full' disabled={loading} >
+                <Button type="submit" className='mt-5 text-black mb-5 w-full bg-gradient-to-r from-lime-400 to-green-500' disabled={loading} >
                     {
                       loading ? (
                         <>
