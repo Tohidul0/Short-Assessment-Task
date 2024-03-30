@@ -55,6 +55,8 @@ function LogIn(props) {
                 setLoading(false)
                 console.log(data);
                 login(data);
+                const loaddata = JSON.stringify(data);
+                localStorage.setItem('user', loaddata );
                 navigate('/home');
             }
         }

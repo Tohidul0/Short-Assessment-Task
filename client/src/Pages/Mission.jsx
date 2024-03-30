@@ -1,12 +1,9 @@
-
 import { Button, Label, Select, TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Mission(props) {
-    const [file, setFile] = useState(null);
     const [formData, setFormData] = useState({});
-    //const apiUrl = process.env.REACT_APP_BACKEND_URL  ;
 
     const navigate = useNavigate();
 
@@ -30,8 +27,7 @@ function Mission(props) {
       }
 
       if (res.ok) {
-        setPublishError(null);
-        navigate(`/post/${data.slug}`);
+        navigate('/dashboard');
       }
     } catch (error) {
         window.alert('Something went wrong');

@@ -20,4 +20,18 @@ export const newpost = async (req, res, next) =>{
       next(err);
     }
   }
+
+
+
+  export const allpost = async (req, res, next) =>{
+    try{
+      const posts = await Mission.find({});
+  
+      res.status(200).json({posts});
+  
+    }
+    catch(err){
+      next(err)
+    }
+  }
   
