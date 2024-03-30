@@ -82,13 +82,13 @@ function Mission(props) {
               <h1 className='text-3xl mt-20 text-center '>Your past posts</h1>
               <div>
                 {
-                    allpost ? (
+                    allpost.length>0 ? (
                         <div className='border-2 mx-10 gap-4 p-10 '>
                             {allpost.map(post =>(
                               <Userpost  key={post._id} post={post}  ></Userpost> 
                             ))}
                         </div>
-                    ) : (<div>
+                    ) : (<div className='text-2xl text-center mt-20 bg-rose-200'>
                         Mice could not post yet
                     </div>)
                 }

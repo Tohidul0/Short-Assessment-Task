@@ -18,6 +18,9 @@ const postSchema = new mongoose.Schema({
         type : String,
         require : true
     },
+    slug :{
+        type : String,
+    }
     
 }, {timestamps : true});
 const Mission = mongoose.model('Mission', postSchema );

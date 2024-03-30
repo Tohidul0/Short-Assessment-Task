@@ -9,8 +9,9 @@ export const newpost = async (req, res, next) =>{
     if(!req.body.title || !req.body.content){
       return next(errorHendeler("required all field"))
     }
+    const slug = req.body.title.split(' ').join('-').toLowerCase();
     const newPost = new Mission({
-      title, catagory, content,  userId: req.user.id 
+      title, catagory, content, slug,  userId: req.user.id 
     });
   
       await newPost.save()
@@ -46,4 +47,23 @@ export const newpost = async (req, res, next) =>{
       next(err);
     }
   }
+
+
+  export const deletePost = async  (req, res, next) =>{
+    const _id =req.params.id;
+      try{
+        const validpost = await Mission.findOne({_id});
+        if(validpost){
+        await Mission.findByIdAndDelete(req.params.id)
+        res.status(200).json("post deleted")
+        }
+        else{
+          return next(errorHendeler(404, 'post not found'))
+        }
+      }
+      catch(err){
+        next(errorHendeler(err))
+      }
+   }
+  
   
