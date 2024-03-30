@@ -34,11 +34,11 @@ function Dashboard(props) {
     return (
         
         <div>
-            <h1 className=' m text-center my-10 text-5xl '> All Mission</h1>
+            <h1 className='  text-center my-10 text-5xl '> All Mission</h1>
             <div>
                 {
                     allpost ? (
-                        <div className='border-2 mx-10 p-20'>
+                        <div className='border-2 mx-10 gap-4 p-10 '>
                             {allpost.map(post =>(
                               <Singlepost key={post._id} post={post}></Singlepost>  
                             ))}

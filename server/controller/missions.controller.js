@@ -34,4 +34,16 @@ export const newpost = async (req, res, next) =>{
       next(err)
     }
   }
+
+
+  export const singleUserPost = async(req, res, next) =>{
+    try{
+      const userPost = await Mission.find({userId : req.params.user})
+     
+      res.status(200).json(userPost);
+    }
+    catch(err){
+      next(err);
+    }
+  }
   

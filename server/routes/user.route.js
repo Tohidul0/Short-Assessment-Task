@@ -8,4 +8,4 @@ router.post('/signup', signUp )
 router.post('/logout' , signOut)
 
 
-export default router;
+export default router; 

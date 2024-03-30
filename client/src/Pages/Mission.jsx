@@ -1,11 +1,14 @@
 import { Button, Label, Select, TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Userpost from '../Components/Userpost';
 
 function Mission(props) {
     const [formData, setFormData] = useState({});
 
     const navigate = useNavigate();
+
+    const [allpost, setAllpost] = useState([]);
 
  
     const hendleSubmit = async (e) => {
@@ -33,6 +36,30 @@ function Mission(props) {
         window.alert('Something went wrong');
     }
   };
+
+
+
+
+  useEffect(() =>{
+    const getUser = async () =>{
+        try{
+            const loadData =JSON.parse( localStorage.getItem('user'));
+            const userId = loadData._id;
+            console.log(userId)
+
+            const res = await fetch(`http://localhost:3000/api/mission/${userId}`);
+            const data= await res.json();
+            setAllpost(data); 
+            console.log(allpost);
+            console.log(data);
+            console.log( typeof( allpost))
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+    getUser();
+}, [])
     
     return (
         <div className='min-h-screen pt-10'>
@@ -49,9 +76,25 @@ function Mission(props) {
             <div className='sm:w-full md:w-3/5 mx-auto'>
             <textarea id="content" onBlur={(e) => setFormData({...formData,[e.target.id] : e.target.value})} placeholder='Description' name="comment" rows="4" className=" w-full mx-auto  border rounded-md  mt-5 bg-gray-700 text-white leading-tight"></textarea>
             </div>
-            <Button type='submit' className='sm:w-full md:w-3/5 mx-auto mt-5 bg-gradient-to-r from-lime-400 to-green-500'>Post</Button>
+            <Button type='submit' className='px-10 rounded-md  mx-auto mt-5 bg-gradient-to-r from-lime-400 to-green-500'>Post</Button>
             </form>
-            
+            <div>
+              <h1 className='text-3xl mt-20 text-center '>Your past posts</h1>
+              <div>
+                {
+                    allpost ? (
+                        <div className='border-2 mx-10 gap-4 p-10 '>
+                            {allpost.map(post =>(
+                              <Userpost  key={post._id} post={post}  ></Userpost> 
+                            ))}
+                        </div>
+                    ) : (<div>
+                        Mice could not post yet
+                    </div>)
+                }
+            </div>
+            </div>
+
             
         </div>
     );
