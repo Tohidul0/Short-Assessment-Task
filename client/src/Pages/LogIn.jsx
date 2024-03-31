@@ -57,7 +57,7 @@ function LogIn(props) {
                 login(data);
                 const loaddata = JSON.stringify(data);
                 localStorage.setItem('user', loaddata );
-                navigate('/home');
+                navigate('/dashboard');
             }
         }
         catch(err){

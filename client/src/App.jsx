@@ -6,6 +6,7 @@ import SignUp from './Pages/SignUp'
 import Mission from './Pages/Mission'
 import PrivateRoute from './Components/PrivateRoute'
 import Dashboard from './Pages/Dashboard'
+import Upadatepost from './Pages/Upadatepost'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route element={<PrivateRoute/>}>
               
               <Route path='/missions' element={<Mission></Mission>}></Route>
+              <Route path='/missions/:_id' element={<Upadatepost></Upadatepost>}></Route>
            
         </Route>
       </Routes>

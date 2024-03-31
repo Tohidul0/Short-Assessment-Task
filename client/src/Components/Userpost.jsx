@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Singlepost(props) {
     const {content, title, catagory,slug, _id} = props.post;
@@ -38,7 +38,7 @@ function Singlepost(props) {
 
             </div>
             <div className='flex justify-between '>
-                <button className='hover:opacity-70 border-2 rounded-md p-2 bg-indigo-500 w-32 m-5'> Upadte</button>
+                <Link to={`/missions/${_id}`} className='hover:opacity-70 border-2 rounded-md p-2 bg-indigo-500 w-32 m-5'> Upadte</Link>
                 <br/>
                 <button onClick={()=>hendleDelte(_id)} className='hover:opacity-70 border-2 rounded-md p-2 bg-red-700 w-32 m-5'>Delete</button>
             </div>

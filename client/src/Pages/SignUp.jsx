@@ -91,7 +91,7 @@ function SignUp(props) {
                     id='password'
                     onBlur={hendleChange}
                     />
-                <Button type="submit" className='mt-5 mb-5 w-full' disabled={loading} >
+                <Button type="submit" className='mt-5 mb-  text-black w-full' disabled={loading} >
                     {
                       loading ? (
                         <>

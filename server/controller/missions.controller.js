@@ -66,4 +66,53 @@ export const newpost = async (req, res, next) =>{
       }
    }
   
+
+
+
+   export const singlePost = async(req, res, next) =>{
+    try{
+      console.log(req.params.post)
+      const post = await Mission.find({_id : req.params.post})
+     
+        res.status(200).json(post);
+    }
+    catch(err){
+      next(err);
+    }
+  }
+
+
+
+  export const updatePost = async (req, res, next) => {
+    console.log(req.params.id);
+    if (!req.body.title || req.body.title === '' || !req.body.catagory || req.body.catagory === '' || !req.body.content || req.body.content === '') {
+        return next(
+          errorHendeler(404, 'All fields are required')
+        );
+    }
+
+    try {
+        const updatedUser = await Mission.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: {
+                    title: req.body.title,
+                    catagory: req.body.catagory,
+                    content: req.body.content,
+                },
+            },
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return next(
+              errorHendeler(404, 'Post not found')
+            );
+        }
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        next(error);
+    }
+};
   

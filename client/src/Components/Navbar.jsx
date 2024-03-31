@@ -42,7 +42,7 @@ function Navbar(props) {
     
     <nav class="block w-full max-w-screen-xl px-6 py-3 mx-auto text-black bg-white border shadow-md rounded-xl border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200">
             <div class="flex items-center justify-between text-blue-gray-900">
-                <Link to='./'> Engagement Platform </Link>
+                <Link to='/dashboard'> Engagement Platform </Link>
             <div class=" lg:block">
                 <ul class="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
                 

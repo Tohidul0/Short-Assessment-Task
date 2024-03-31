@@ -9,7 +9,7 @@ function Singlepost(props) {
       <div className="space-y-6 z-20 relative">
         <h1 className="text-2xl font-bold">{title}</h1>
         <p>{content}</p>
-        <p className={catagory === 'Open' ? "bg-[#36d14a] py-2 px-6 w-1/6" : "bg-[#ee3e3e] py-2 px-6 w-1/6"}>{catagory}</p>
+        <p className={catagory === 'Open' ? "bg-[#36d14a] py-2 px-6  sm:w-5 md:w-1/6" : "bg-[#ee3e3e] sm:w-5 md:w-1/6 py-2 px-6 "}>{catagory}</p>
 
       </div>
     </div>
