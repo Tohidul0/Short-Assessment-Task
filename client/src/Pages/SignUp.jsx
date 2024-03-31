@@ -65,20 +65,22 @@ function SignUp(props) {
 
 
     return (
-        <div className='mt-20  min-h-screen md:mx-auto sm:px-7  flex justify-center flex-col md:flex-row   max-w-3xl '>
+        <div className='mt-10  min-h-screen md:mx-auto sm:px-7  flex justify-center flex-col md:flex-row   max-w-3xl '>
             
-            <div className=' w-full mx-auto '>
+            <div className=' w-2/3 mx-auto border-2 h-72 py-10 px-5 rounded-lg bg-zinc-700 text-white'>
             <form  onSubmit={hendleSubmit}>
                 
                 <Label className='mt-5' value='Your Email'/>
                 <TextInput
-                    type='text'
+                     className='text-black'
+                    type='email'
                     placeholder='your@gmail.com'
                     id='email'
                     onBlur={hendleChange}
                     />
                 <Label className='mt-5' value='Your username'/>
                 <TextInput
+                     className='text-black'
                     type='text'
                     placeholder='username'
                     id='username'
@@ -86,12 +88,13 @@ function SignUp(props) {
                     />
                 <Label className='mt-5' value='Your Password'/>
                 <TextInput
+                     className='text-black'
                     type='password'
                     placeholder='Password'
                     id='password'
                     onBlur={hendleChange}
                     />
-                <Button type="submit" className='mt-5 mb-  text-black w-full' disabled={loading} >
+                <Button type="submit" className='mt-5 mb-  text-black w-full bg-gradient-to-r from-lime-400 to-green-500' disabled={loading} >
                     {
                       loading ? (
                         <>

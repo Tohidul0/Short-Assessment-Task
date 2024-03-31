@@ -34,7 +34,7 @@ function Dashboard(props) {
     return (
         
         <div>
-            <h1 className='  text-center my-10 text-5xl '> All Mission</h1>
+            <h1 className='  text-center my-10 text-5xl font-serif font-semibold'> All Mission</h1>
             <div>
                 {
                     allpost ? (

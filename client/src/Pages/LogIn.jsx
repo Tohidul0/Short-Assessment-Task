@@ -68,20 +68,22 @@ function LogIn(props) {
 
 
     return (
-        <div className='mt-20  min-h-screen md:mx-auto sm:px-7  flex justify-center flex-col md:flex-row   max-w-3xl '>
+        <div className='mt-10  min-h-screen md:mx-auto sm:px-7  flex justify-center flex-col md:flex-row   max-w-3xl '>
             
-            <div className=' w-full mx-auto '>
+            <div className=' w-2/3 mx-auto border-2 h-72 p-10 rounded-lg bg-zinc-700 text-white  '>
             <form  onSubmit={hendleSubmit}>
                 
-                <Label className='mt-5' value='Your Email'/>
+                <Label className='mt-10' value='Your Email'/>
                 <TextInput
-                    type='text'
+                    className='text-black'
+                    type='email'
                     placeholder='your@gmail.com'
                     id='email'
                     onBlur={hendleChange}
                     />
-                <Label className='mt-5' value='Your Password'/>
+                <Label className='mt-10 pt-10' value='Your Password'/>
                 <TextInput
+                     className='text-black'
                     type='password'
                     placeholder='Password'
                     id='password'

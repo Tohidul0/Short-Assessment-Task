@@ -73,7 +73,7 @@ function Upadatepost(props) {
             <form onSubmit={hendleSubmit}>
             
             
-            <TextInput type='text'id="title"  placeholder={title} className=' sm:w-full md:w-3/5 mx-auto mt-5' onBlur={(e) => setFormData({...formData,[e.target.id] : e.target.value})}></TextInput>
+            <TextInput type='text'id="title"   placeholder={title} className=' sm:w-full md:w-3/5 mx-auto mt-5' onBlur={(e) => setFormData({...formData,[e.target.id] : e.target.value})}></TextInput>
             <Select id="catagory"  className='sm:w-full md:w-3/5 mx-auto mt-5' onBlur={(e) => setFormData({...formData,[e.target.id] : e.target.value})}>
                 <option type="uncategorized">Choose a Status</option>
                 <option value="Open">Open</option>

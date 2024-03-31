@@ -2,13 +2,14 @@ import User from "../models/user.model.js";
 import  bcryptjs from 'bcryptjs';
 import { error } from "console";
 import jwt from "jsonwebtoken";
+import { errorHendeler } from './../middleware/error.js';
 
 export const signUp = async (req, res, next) => {
    const {username, email, password  } = req.body;
    console.log(username, email ) ;
 
    if(!username || !email || !password || username.trim() === '' || email.trim() === '' || password == ''){
-      return res.status(400).json({ error: 'All fields are required' });
+      return next(errorHendeler(400, 'All fields are required'))
    }
     //    hashing passworad with bycriptjs----------------------------
    const hashpasswoard =bcryptjs.hashSync(password,10);
@@ -25,25 +26,26 @@ export const signUp = async (req, res, next) => {
     res.json('SignUp successful') 
    }
    catch(err){
-      return error(err);
+      return next(err);
    }
    
 };
 
 
-export const signIn = async (req, res ) => {
+export const signIn = async (req, res, next ) => {
     const { email, password  } = req.body;
     try{
        if(!email || !password){
-        return res.status(400).json({ error: 'All fields are required' });
+         return next(errorHendeler(400, 'All fields are required'))
        }
        const validUser = await User.findOne({email});
        if(!validUser){
-        return res.status(404).json({ error: 'Email not found' });
+        return next(errorHendeler(404, 'Email not found'))
        }
        const validPasword = bcryptjs.compareSync(password, validUser.password);
        if(!validPasword){
-        return res.status(400).json({ error: 'Invalid password' });
+        return next(errorHendeler(400, 'Invalid password' ))
+        
        }
  
        // remove password from user for frontend sequrity--------------------------------
@@ -53,18 +55,18 @@ export const signIn = async (req, res ) => {
        
     }
     catch(err){
-       return error(err);
+       return next(err);
     }
  
  
  
  }
 
- export const signOut = async (req, res) =>{
+ export const signOut = async (req, res, next) =>{
    try{
      res.clearCookie('access_token').status(200).json('sign Out Successful')
    }
    catch(err){
-      return error(err);
+      return next(err);
    }
 }
