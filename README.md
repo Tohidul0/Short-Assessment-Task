@@ -40,10 +40,7 @@ Introduce additional features such as user notifications and content recommendat
 - [Installation](#installation)
   - [Frontend](#frontend)
   - [Backend](#backend)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
+    
 ## Installation
 
 ### Frontend
